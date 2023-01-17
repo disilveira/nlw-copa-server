@@ -1,1 +1,1 @@
-# nlw-copa-server
+# nlw-setup-server
