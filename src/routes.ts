@@ -4,7 +4,6 @@ import { z } from "zod";
 import { prisma } from "./lib/prisma";
 
 export async function appRoutes(app: FastifyInstance) {
-    
   app.post("/habits", async (request) => {
     const createHabitBody = z.object({
       title: z.string(),
@@ -39,6 +38,8 @@ export async function appRoutes(app: FastifyInstance) {
 
     const parsedDate = dayjs(date).startOf("day");
     const weekDay = parsedDate.get("day");
+
+    console.log(date, weekDay);
 
     const possibleHabits = await prisma.habit.findMany({
       where: {
@@ -138,5 +139,4 @@ export async function appRoutes(app: FastifyInstance) {
 
     return summary;
   });
-
 }
